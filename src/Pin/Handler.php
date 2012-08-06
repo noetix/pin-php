@@ -5,6 +5,7 @@ namespace Pin;
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\Options;
 use Buzz\Browser;
 use Buzz\Client\Curl;
 
@@ -36,17 +37,25 @@ class Handler
     {
         $resolver
             ->setDefaults(array(
-                'host' => 'https://test-api.pin.net.au'
+                'host' => function (Options $options) {
+                    if ($options->has('test') && $options['test']) {
+                        return 'https://test-api.pin.net.au';
+                    }
+
+                    return 'https://api.pin.net.au';
+                }
             ))
             ->setRequired(array(
                 'key'
             ))
             ->setOptional(array(
-                'host'
+                'host',
+                'test'
             ))
             ->setAllowedTypes(array(
                 'host' => 'string',
-                'key'  => 'string'
+                'key'  => 'string',
+                'test' => 'bool'
             ));
     }
 
