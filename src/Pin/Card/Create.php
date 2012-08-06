@@ -21,8 +21,8 @@ class Create implements RequestInterface
     protected function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver
-	        ->setRequired(array(
-	        	'number',
+            ->setRequired(array(
+                'number',
                 'expiry_month',
                 'expiry_year',
                 'cvc',
@@ -30,10 +30,10 @@ class Create implements RequestInterface
                 'address_line1',
                 'address_city',
                 'address_postcode',
-	        	'address_state',
-	        	'address_country'
-	        ))
-	        ->setAllowedTypes(array(
+                'address_state',
+                'address_country'
+            ))
+            ->setAllowedTypes(array(
                 'number'           => 'numeric',
                 'expiry_month'     => 'numeric',
                 'expiry_year'      => 'numeric',
@@ -44,7 +44,7 @@ class Create implements RequestInterface
                 'address_postcode' => 'numeric',
                 'address_state'    => 'string',
                 'address_country'  => 'string'
-	        ));
+            ));
     }
 
     /**
@@ -52,7 +52,7 @@ class Create implements RequestInterface
      */
     public function getMethod()
     {
-    	return self::METHOD_POST;
+        return self::METHOD_POST;
     }
 
     /**
@@ -60,14 +60,14 @@ class Create implements RequestInterface
      */
     public function getPath()
     {
-    	return '/1/cards';
+        return '/1/cards';
     }
 
     /**
      * {@inheritdoc}
      */
-	public function getData()
-	{
-		return $this->options;
-	}
+    public function getData()
+    {
+        return $this->options;
+    }
 }

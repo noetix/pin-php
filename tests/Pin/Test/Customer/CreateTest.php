@@ -7,9 +7,9 @@ use Pin\Customer\Create;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
-	private function getValidOptions()
-	{
-		return array(
+    private function getValidOptions()
+    {
+        return array(
             'email'       => 'roland@pin.net.au',
             'card'        => array(
                 'number'           => '5520000000000000',
@@ -23,65 +23,65 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                 'address_state'    => 'WA',
                 'address_country'  => 'AU'),
         );
-	}
+    }
 
-	private function getValidCardTokenOptions()
-	{
-		return array(
+    private function getValidCardTokenOptions()
+    {
+        return array(
             'email'      => 'roland@pin.net.au',
             'card_token' => 'foo',
         );
-	}
+    }
 
-	private function getValidMethods()
-	{
-		$r = new \ReflectionClass('Pin\RequestInterface');
-		$methods = array();
+    private function getValidMethods()
+    {
+        $r = new \ReflectionClass('Pin\RequestInterface');
+        $methods = array();
 
-		foreach ($r->getConstants() AS $key => $value) {
-			if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
-				$methods[] = $value;
-			}
-		}
+        foreach ($r->getConstants() AS $key => $value) {
+            if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
+                $methods[] = $value;
+            }
+        }
 
-		return $methods;
-	}
+        return $methods;
+    }
 
-	public function testValidOptions()
-	{
-		$obj = new Create($this->getValidOptions());
-	}
+    public function testValidOptions()
+    {
+        $obj = new Create($this->getValidOptions());
+    }
 
-	public function testValidCardTokenOptions()
-	{
-		$obj = new Create($this->getValidCardTokenOptions());
-	}
+    public function testValidCardTokenOptions()
+    {
+        $obj = new Create($this->getValidCardTokenOptions());
+    }
 
-	public function testInvalidOptions()
-	{
-		$this->setExpectedException('InvalidArgumentException');
+    public function testInvalidOptions()
+    {
+        $this->setExpectedException('InvalidArgumentException');
 
-		$obj = new Create(array('foo' => 'bar'));
-	}
+        $obj = new Create(array('foo' => 'bar'));
+    }
 
-	public function testMethod()
-	{
-		$obj = new Create($this->getValidOptions());
+    public function testMethod()
+    {
+        $obj = new Create($this->getValidOptions());
 
-		$this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
-	}
+        $this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
+    }
 
-	public function testPath()
-	{
-		$obj = new Create($this->getValidOptions());
+    public function testPath()
+    {
+        $obj = new Create($this->getValidOptions());
 
-		$this->assertTrue(parse_url($obj->getPath()) !== false);
-	}
+        $this->assertTrue(parse_url($obj->getPath()) !== false);
+    }
 
-	public function testData()
-	{
-		$obj = new Create($this->getValidOptions());
+    public function testData()
+    {
+        $obj = new Create($this->getValidOptions());
 
-		$this->assertTrue(is_array($obj->getData()));
-	}
+        $this->assertTrue(is_array($obj->getData()));
+    }
 }

@@ -7,9 +7,9 @@ use Pin\Charge\Create;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
 {
-	private function getValidCardOptions()
-	{
-		return array(
+    private function getValidCardOptions()
+    {
+        return array(
             'amount'      => 400,
             'description' => 'test charge',
             'email'       => 'roland@pin.net.au',
@@ -26,84 +26,84 @@ class CreateTest extends \PHPUnit_Framework_TestCase
                 'address_state'    => 'WA',
                 'address_country'  => 'AU'),
         );
-	}
+    }
 
-	private function getValidCardTokenOptions()
-	{
-		return array(
+    private function getValidCardTokenOptions()
+    {
+        return array(
             'amount'      => 400,
             'description' => 'test charge',
             'email'       => 'roland@pin.net.au',
             'ip_address'  => '203.192.1.172',
             'card_token'  => 'foo',
         );
-	}
+    }
 
-	private function getValidCustomerTokenOptions()
-	{
-		return array(
-			'amount'         => 400,
-			'description'    => 'test charge',
-			'email'          => 'roland@pin.net.au',
-			'ip_address'     => '203.192.1.172',
-			'customer_token' => 'bar',
+    private function getValidCustomerTokenOptions()
+    {
+        return array(
+            'amount'         => 400,
+            'description'    => 'test charge',
+            'email'          => 'roland@pin.net.au',
+            'ip_address'     => '203.192.1.172',
+            'customer_token' => 'bar',
         );
-	}
+    }
 
-	private function getValidMethods()
-	{
-		$r = new \ReflectionClass('Pin\RequestInterface');
-		$methods = array();
+    private function getValidMethods()
+    {
+        $r = new \ReflectionClass('Pin\RequestInterface');
+        $methods = array();
 
-		foreach ($r->getConstants() AS $key => $value) {
-			if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
-				$methods[] = $value;
-			}
-		}
+        foreach ($r->getConstants() AS $key => $value) {
+            if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
+                $methods[] = $value;
+            }
+        }
 
-		return $methods;
-	}
+        return $methods;
+    }
 
-	public function testValidCardOptions()
-	{
-		$obj = new Create($this->getValidCardOptions());
-	}
+    public function testValidCardOptions()
+    {
+        $obj = new Create($this->getValidCardOptions());
+    }
 
-	public function testValidCardTokenOptions()
-	{
-		$obj = new Create($this->getValidCardTokenOptions());
-	}
+    public function testValidCardTokenOptions()
+    {
+        $obj = new Create($this->getValidCardTokenOptions());
+    }
 
-	public function testValidCustomerTokenOptions()
-	{
-		$obj = new Create($this->getValidCustomerTokenOptions());
-	}
+    public function testValidCustomerTokenOptions()
+    {
+        $obj = new Create($this->getValidCustomerTokenOptions());
+    }
 
-	public function testInvalidOptions()
-	{
-		$this->setExpectedException('InvalidArgumentException');
+    public function testInvalidOptions()
+    {
+        $this->setExpectedException('InvalidArgumentException');
 
-		$obj = new Create(array('foo' => 'bar'));
-	}
+        $obj = new Create(array('foo' => 'bar'));
+    }
 
-	public function testMethod()
-	{
-		$obj = new Create($this->getValidCardOptions());
+    public function testMethod()
+    {
+        $obj = new Create($this->getValidCardOptions());
 
-		$this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
-	}
+        $this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
+    }
 
-	public function testPath()
-	{
-		$obj = new Create($this->getValidCardTokenOptions());
+    public function testPath()
+    {
+        $obj = new Create($this->getValidCardTokenOptions());
 
-		$this->assertTrue(parse_url($obj->getPath()) !== false);
-	}
+        $this->assertTrue(parse_url($obj->getPath()) !== false);
+    }
 
-	public function testData()
-	{
-		$obj = new Create($this->getValidCustomerTokenOptions());
+    public function testData()
+    {
+        $obj = new Create($this->getValidCustomerTokenOptions());
 
-		$this->assertTrue(is_array($obj->getData()));
-	}
+        $this->assertTrue(is_array($obj->getData()));
+    }
 }

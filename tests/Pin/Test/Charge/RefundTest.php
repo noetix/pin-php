@@ -7,57 +7,57 @@ use Pin\Charge\Refund;
 
 class RefundTest extends \PHPUnit_Framework_TestCase
 {
-	private function getValidOptions()
-	{
-		return array(
-			'amount' => 400,
+    private function getValidOptions()
+    {
+        return array(
+            'amount' => 400,
         );
-	}
+    }
 
-	private function getValidMethods()
-	{
-		$r = new \ReflectionClass('Pin\RequestInterface');
-		$methods = array();
+    private function getValidMethods()
+    {
+        $r = new \ReflectionClass('Pin\RequestInterface');
+        $methods = array();
 
-		foreach ($r->getConstants() AS $key => $value) {
-			if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
-				$methods[] = $value;
-			}
-		}
+        foreach ($r->getConstants() AS $key => $value) {
+            if (substr($key, 0, strlen('METHOD_')) === 'METHOD_') {
+                $methods[] = $value;
+            }
+        }
 
-		return $methods;
-	}
+        return $methods;
+    }
 
-	public function testValidOptions()
-	{
-		$obj = new Refund('foo', $this->getValidOptions());
-	}
+    public function testValidOptions()
+    {
+        $obj = new Refund('foo', $this->getValidOptions());
+    }
 
-	public function testInvalidOptions()
-	{
-		$this->setExpectedException('InvalidArgumentException');
+    public function testInvalidOptions()
+    {
+        $this->setExpectedException('InvalidArgumentException');
 
-		$obj = new Refund(123, array('foo' => 'bar'));
-	}
+        $obj = new Refund(123, array('foo' => 'bar'));
+    }
 
-	public function testMethod()
-	{
-		$obj = new Refund('foo', $this->getValidOptions());
+    public function testMethod()
+    {
+        $obj = new Refund('foo', $this->getValidOptions());
 
-		$this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
-	}
+        $this->assertTrue(in_array($obj->getMethod(), $this->getValidMethods()));
+    }
 
-	public function testPath()
-	{
-		$obj = new Refund('foo', $this->getValidOptions());
+    public function testPath()
+    {
+        $obj = new Refund('foo', $this->getValidOptions());
 
-		$this->assertTrue(parse_url($obj->getPath()) !== false);
-	}
+        $this->assertTrue(parse_url($obj->getPath()) !== false);
+    }
 
-	public function testData()
-	{
-		$obj = new Refund('foo', $this->getValidOptions());
+    public function testData()
+    {
+        $obj = new Refund('foo', $this->getValidOptions());
 
-		$this->assertTrue(is_array($obj->getData()));
-	}
+        $this->assertTrue(is_array($obj->getData()));
+    }
 }

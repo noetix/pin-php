@@ -30,12 +30,12 @@ class Refund implements RequestInterface
     protected function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver
-	        ->setRequired(array(
-	        	'amount'
-	        ))
-	        ->setAllowedTypes(array(
+            ->setRequired(array(
+                'amount'
+            ))
+            ->setAllowedTypes(array(
                 'amount' => 'numeric'
-	        ));
+            ));
     }
 
     /**
@@ -43,7 +43,7 @@ class Refund implements RequestInterface
      */
     public function getMethod()
     {
-    	return self::METHOD_POST;
+        return self::METHOD_POST;
     }
 
     /**
@@ -57,8 +57,8 @@ class Refund implements RequestInterface
     /**
      * {@inheritdoc}
      */
-	public function getData()
-	{
-		return $this->options;
-	}
+    public function getData()
+    {
+        return $this->options;
+    }
 }

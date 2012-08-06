@@ -21,19 +21,19 @@ class Create implements RequestInterface
     protected function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver
-	        ->setRequired(array(
-	        	'email'
-	        ))
-	        ->setOptional(array(
-	        	'ip_address',
-	        	'card',
-	        	'card_token'
-	        ))
-	        ->setAllowedTypes(array(
-				'email'          => 'string',
-				'card'           => 'array',
-				'card_token'     => 'string'
-	        ));
+            ->setRequired(array(
+                'email'
+            ))
+            ->setOptional(array(
+                'ip_address',
+                'card',
+                'card_token'
+            ))
+            ->setAllowedTypes(array(
+                'email'          => 'string',
+                'card'           => 'array',
+                'card_token'     => 'string'
+            ));
     }
 
     /**
@@ -41,7 +41,7 @@ class Create implements RequestInterface
      */
     public function getMethod()
     {
-    	return self::METHOD_POST;
+        return self::METHOD_POST;
     }
 
     /**
@@ -49,14 +49,14 @@ class Create implements RequestInterface
      */
     public function getPath()
     {
-    	return '/1/customers';
+        return '/1/customers';
     }
 
     /**
      * {@inheritdoc}
      */
-	public function getData()
-	{
-		return $this->options;
-	}
+    public function getData()
+    {
+        return $this->options;
+    }
 }

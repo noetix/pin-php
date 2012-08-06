@@ -22,7 +22,7 @@ class Retrieve implements RequestInterface
      */
     public function getMethod()
     {
-    	return self::METHOD_GET;
+        return self::METHOD_GET;
     }
 
     /**
@@ -30,14 +30,14 @@ class Retrieve implements RequestInterface
      */
     public function getPath()
     {
-    	return sprintf('/1/charges/%s', $this->token);
+        return sprintf('/1/charges/%s', $this->token);
     }
 
     /**
      * {@inheritdoc}
      */
-	public function getData()
-	{
+    public function getData()
+    {
         return array();
-	}
+    }
 }
