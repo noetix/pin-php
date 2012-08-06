@@ -1,0 +1,22 @@
+{
+    "name": "noetix/pin-php",
+    "description": "Pin Payment API Library",
+    "homepage": "https://github.com/noetix/pin-php",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alex Joyce",
+            "email": "im@alex-joyce.com",
+            "homepage": "http://alex-joyce.com/"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "kriswallsmith/buzz": "dev-master",
+        "symfony/options-resolver": "dev-master"
+    },
+    "autoload": {
+        "psr-0": { "Pin": "src/" }
+    }
+}
