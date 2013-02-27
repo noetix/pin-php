@@ -27,18 +27,23 @@ class Create implements RequestInterface
                 'email'
             ))
             ->setOptional(array(
+                'currency',
                 'ip_address',
                 'card',
                 'card_token',
                 'customer_token'
             ))
             ->setAllowedTypes(array(
+                'currency'       => 'string',
                 'amount'         => 'numeric',
                 'description'    => 'string',
                 'email'          => 'string',
                 'card'           => 'array',
                 'card_token'     => 'string',
                 'customer_token' => 'string'
+            ))
+            ->setAllowedValues(array(
+                'currency' => array('AUD', 'USD')
             ));
     }
 
