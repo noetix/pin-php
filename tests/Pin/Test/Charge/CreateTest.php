@@ -2,7 +2,6 @@
 
 namespace Pin\Test\Charge;
 
-use Pin\Handler;
 use Pin\Charge\Create;
 
 class CreateTest extends \PHPUnit_Framework_TestCase
@@ -11,6 +10,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'amount'      => 400,
+            'currency'    => 'USD',
             'description' => 'test charge',
             'email'       => 'roland@pin.net.au',
             'ip_address'  => '203.192.1.172',
@@ -32,6 +32,7 @@ class CreateTest extends \PHPUnit_Framework_TestCase
     {
         return array(
             'amount'      => 400,
+            'currency'    => 'AUD',
             'description' => 'test charge',
             'email'       => 'roland@pin.net.au',
             'ip_address'  => '203.192.1.172',
