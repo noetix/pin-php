@@ -43,7 +43,7 @@ class Create implements RequestInterface
                 'customer_token' => 'string'
             ))
             ->setAllowedValues(array(
-                'currency' => array('AUD', 'USD')
+                'currency' => array('AUD', 'USD', 'NZD')
             ));
     }
 

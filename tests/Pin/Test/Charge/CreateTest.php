@@ -70,6 +70,13 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $obj = new Create($this->getValidCardOptions());
     }
 
+    public function testValidNZDCardOptions()
+    {
+        $validChargeInNZD = $this->getValidCardOptions();
+        $validChargeInNZD['currency'] = 'NZD';
+        $obj = new Create($validChargeInNZD);
+    }
+
     public function testValidCardTokenOptions()
     {
         $obj = new Create($this->getValidCardTokenOptions());
