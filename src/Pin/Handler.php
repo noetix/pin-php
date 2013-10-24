@@ -16,7 +16,7 @@ class Handler
 
     /**
      * Constructor
-     * 
+     *
      * @param array $options
      */
     public function __construct(array $options = array())
@@ -30,7 +30,7 @@ class Handler
 
     /**
      * Set our default options.
-     * 
+     *
      * @param OptionsResolverInterface $resolver
      */
     protected function setDefaultOptions(OptionsResolverInterface $resolver)
@@ -50,12 +50,14 @@ class Handler
             ))
             ->setOptional(array(
                 'host',
-                'test'
+                'test',
+                'timeout',
             ))
             ->setAllowedTypes(array(
                 'host' => 'string',
                 'key'  => 'string',
-                'test' => 'bool'
+                'test' => 'bool',
+                'timeout' => 'int',
             ));
     }
 
@@ -67,13 +69,16 @@ class Handler
         $client = new Curl;
         $client->setVerifyPeer(false);
         $client->setOption(CURLOPT_USERPWD, $this->options['key'] . ':');
+        if (isset($this->options['timeout'])) {
+            $client->setTimeout($this->options['timeout']);
+        }
 
         $this->browser = new Browser($client);
     }
 
     /**
      * Submit a request to the API.
-     * 
+     *
      * @param RequestInterface $request
      * @return object
      */
