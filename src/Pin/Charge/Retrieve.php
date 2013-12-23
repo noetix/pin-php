@@ -12,7 +12,7 @@ class Retrieve implements RequestInterface
     public function __construct($token)
     {
         if (!is_string($token))
-            throw new InvalidOptionsException('The first arguemnt is expected to be of type "string"');
+            throw new InvalidOptionsException('The first argument is expected to be of type "string"');
 
         $this->token = $token;
     }
