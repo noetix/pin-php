@@ -7,24 +7,12 @@
 
 # Installation
 
-Download the project from GitHub. Once downloaded, you'll need to use Composer. Open Terminal and navigate to the directory where the project was saved.
-
-```
-curl -s http://getcomposer.org/installer | php
-```
-
-Then install:
-
-```
-php composer.phar install
-```
-
-Once that's done and all the dependencies have been downloaded, you're pretty much free to go.
+Download the project from GitHub. Once downloaded, you'll need to use [Composer][5]. 
 
 Make sure to include the class autoload file.
 
 ```php
-include("vendor/autoload.php");
+include 'vendor/autoload.php';
 ```
 
 # Examples
@@ -90,3 +78,4 @@ $service = new Pin\Handler(array('key' => 'secret_API_key', 'test' => true));
 [2]: https://github.com/kriswallsmith/Buzz
 [3]: https://pin.net.au/docs/api/charges
 [4]: https://pin.net.au/docs/api/refunds
+[5]: http://getcomposer.org/
