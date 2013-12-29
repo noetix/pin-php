@@ -65,39 +65,34 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         return $methods;
     }
 
+    public function getValidCurrencies()
+    {
+        return array(
+            array('AUD'),
+            array('USD'),
+            array('NZD'),
+            array('SGD'),
+            array('EUR'),
+            array('GBP')
+        );
+    }
+
     public function testValidCardOptions()
     {
         $obj = new Create($this->getValidCardOptions());
     }
 
-    public function testValidNZDCardOptions()
+    /**
+     * @dataProvider getValidCurrencies
+     */
+    public function testValidCurrencies($currency)
     {
-        $validChargeInNZD = $this->getValidCardOptions();
-        $validChargeInNZD['currency'] = 'NZD';
-        $obj = new Create($validChargeInNZD);
+        $charge = $this->getValidCardOptions();
+        $charge['currency'] = $currency;
+
+        $obj = new Create($charge);
     }
 
-    public function testValidSGDCardOptions()
-    {
-        $validChargeInNZD = $this->getValidCardOptions();
-        $validChargeInNZD['currency'] = 'SGD';
-        $obj = new Create($validChargeInNZD);
-    }
-    
-    public function testValidEURCardOptions()
-    {
-        $validChargeInNZD = $this->getValidCardOptions();
-        $validChargeInNZD['currency'] = 'EUR';
-        $obj = new Create($validChargeInNZD);
-    }
-    
-    public function testValidGBPCardOptions()
-    {
-        $validChargeInNZD = $this->getValidCardOptions();
-        $validChargeInNZD['currency'] = 'GBP';
-        $obj = new Create($validChargeInNZD);
-    }
-    
     public function testValidCardTokenOptions()
     {
         $obj = new Create($this->getValidCardTokenOptions());
