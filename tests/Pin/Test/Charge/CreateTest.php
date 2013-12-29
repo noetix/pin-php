@@ -77,6 +77,27 @@ class CreateTest extends \PHPUnit_Framework_TestCase
         $obj = new Create($validChargeInNZD);
     }
 
+    public function testValidSGDCardOptions()
+    {
+        $validChargeInNZD = $this->getValidCardOptions();
+        $validChargeInNZD['currency'] = 'SGD';
+        $obj = new Create($validChargeInNZD);
+    }
+    
+    public function testValidEURCardOptions()
+    {
+        $validChargeInNZD = $this->getValidCardOptions();
+        $validChargeInNZD['currency'] = 'EUR';
+        $obj = new Create($validChargeInNZD);
+    }
+    
+    public function testValidGBPCardOptions()
+    {
+        $validChargeInNZD = $this->getValidCardOptions();
+        $validChargeInNZD['currency'] = 'GBP';
+        $obj = new Create($validChargeInNZD);
+    }
+    
     public function testValidCardTokenOptions()
     {
         $obj = new Create($this->getValidCardTokenOptions());

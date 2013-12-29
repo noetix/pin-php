@@ -5,13 +5,29 @@
 * PHP 5.3+ Library
 * Curl Transport (via [Buzz][2])
 
-# Example
+# Installation
+
+Download the project from GitHub. Once downloaded, you'll need to use [Composer][5]. 
+
+Make sure to include the class autoload file.
+
+```php
+include 'vendor/autoload.php';
+```
+
+# Examples
+
+## Charges 
+
+This example will charge $4.00 (API requires amount to be provided in cents) against a test credit card on the *live* API. To use the testing/sandbox API, see the example below.
+
+This is an example using the Pin Payments [Charges API][3]:
 
 ```php
 <?php
 
 // create our request handler
-$service = new Pin\Handler(array('key' => ''));
+$service = new Pin\Handler(array('key' => 'secret_API_key'));
 
 // build a new charge request
 $request = new Pin\Charge\Create(array(
@@ -36,5 +52,30 @@ $request = new Pin\Charge\Create(array(
 $response = $service->submit($request);
 ```
 
+## Refunds 
+
+This is a simple example on how to process refunds. 
+
+This uses the Pin Payments [Refund API][4]:
+
+```php
+$request = new Pin\Charge\Refund('charge_token_here', array('amount'=>'900'));
+```
+
+## Live API vs the Test API
+
+This example shows how to add an option so you use the test API (test-api.pin.net.au) instead of the live one.
+
+```php
+<?php
+
+$service = new Pin\Handler(array('key' => 'secret_API_key', 'test' => true));
+
+```
+
+
 [1]: https://pin.net.au/
 [2]: https://github.com/kriswallsmith/Buzz
+[3]: https://pin.net.au/docs/api/charges
+[4]: https://pin.net.au/docs/api/refunds
+[5]: http://getcomposer.org/
