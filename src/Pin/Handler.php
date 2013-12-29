@@ -91,4 +91,14 @@ class Handler
 
         return json_decode($response->getContent());
     }
+
+    /**
+     * Get the transport handler, currently only Buzz.
+     *
+     * @return Buzz\Browser
+     */
+    public function getTransport()
+    {
+        return $this->browser;
+    }
 }
