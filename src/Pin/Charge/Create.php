@@ -31,7 +31,8 @@ class Create implements RequestInterface
                 'ip_address',
                 'card',
                 'card_token',
-                'customer_token'
+                'customer_token',
+                'capture'
             ))
             ->setAllowedTypes(array(
                 'currency'       => 'string',
@@ -40,7 +41,8 @@ class Create implements RequestInterface
                 'email'          => 'string',
                 'card'           => 'array',
                 'card_token'     => 'string',
-                'customer_token' => 'string'
+                'customer_token' => 'string',
+                'capture'        => 'string'
             ))
             ->setAllowedValues(array(
                 'currency' => array('AUD', 'USD', 'NZD', 'SGD', 'EUR', 'GBP')
