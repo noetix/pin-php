@@ -73,7 +73,10 @@ class CreateTest extends \PHPUnit_Framework_TestCase
             array('NZD'),
             array('SGD'),
             array('EUR'),
-            array('GBP')
+            array('GBP'),
+            array('CAD'),
+            array('HKD'),
+            array('JPY')
         );
     }
 

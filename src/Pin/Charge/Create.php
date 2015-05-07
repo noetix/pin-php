@@ -45,7 +45,7 @@ class Create implements RequestInterface
                 'capture'        => 'string'
             ))
             ->setAllowedValues(array(
-                'currency' => array('AUD', 'USD', 'NZD', 'SGD', 'EUR', 'GBP')
+                'currency' => array('AUD', 'USD', 'NZD', 'SGD', 'EUR', 'GBP', 'CAD', 'HKD', 'JPY')
             ));
     }
 
