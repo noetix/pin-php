@@ -7,7 +7,7 @@
 
 # Installation
 
-Download the project from GitHub. Once downloaded, you'll need to use [Composer][5]. 
+Download the project from GitHub. Once downloaded, you'll need to use [Composer][5].
 
 Make sure to include the class autoload file.
 
@@ -17,7 +17,7 @@ include 'vendor/autoload.php';
 
 # Examples
 
-## Charges 
+## Charges
 
 This example will charge $4.00 (API requires amount to be provided in cents) against a test credit card on the *live* API. To use the testing/sandbox API, see the example below.
 
@@ -52,9 +52,9 @@ $request = new Pin\Charge\Create(array(
 $response = $service->submit($request);
 ```
 
-## Refunds 
+## Refunds
 
-This is a simple example on how to process refunds. 
+This is a simple example on how to process refunds.
 
 This uses the Pin Payments [Refund API][4]:
 
