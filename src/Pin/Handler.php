@@ -37,7 +37,7 @@ class Handler
     {
         $resolver
             ->setDefaults(array(
-                'host' => function (Options $options) {
+                'host' => function(Options $options) {
                     if ($options->has('test') && $options['test']) {
                         return 'https://test-api.pin.net.au';
                     }
