@@ -1,7 +1,7 @@
 [![Latest Stable Version](https://poser.pugx.org/noetix/pin-php/v/stable)](https://packagist.org/packages/noetix/pin-php)
 [![Latest Unstable Version](https://poser.pugx.org/noetix/pin-php/v/unstable)](https://packagist.org/packages/noetix/pin-php)
 [![Total Downloads](https://poser.pugx.org/noetix/pin-php/downloads)](https://packagist.org/packages/noetix/pin-php)
-[![Build Status](https://scrutinizer-ci.com/g/noetix/pin-php/badges/build.png?b=master)](https://scrutinizer-ci.com/g/noetix/pin-php/build-status/master)
+[![Build Status](https://travis-ci.org/noetix/pin-php.svg?branch=master)](https://travis-ci.org/noetix/pin-php)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/noetix/pin-php/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/noetix/pin-php/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/a1ab2385-88ec-4069-96e2-3042cc074deb/mini.png)](https://insight.sensiolabs.com/projects/a1ab2385-88ec-4069-96e2-3042cc074deb)
 [![License](https://poser.pugx.org/noetix/pin-php/license)](https://packagist.org/packages/noetix/pin-php)
