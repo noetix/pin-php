@@ -4,7 +4,6 @@ namespace Pin\Charge;
 
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class Create implements RequestInterface
 {
@@ -18,7 +17,7 @@ class Create implements RequestInterface
         $this->options = $resolver->resolve($options);
     }
 
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setRequired(array(
@@ -26,7 +25,7 @@ class Create implements RequestInterface
                 'description',
                 'email'
             ))
-            ->setOptional(array(
+            ->setDefined(array(
                 'currency',
                 'ip_address',
                 'card',
@@ -34,19 +33,16 @@ class Create implements RequestInterface
                 'customer_token',
                 'capture'
             ))
-            ->setAllowedTypes(array(
-                'currency'       => 'string',
-                'amount'         => 'numeric',
-                'description'    => 'string',
-                'email'          => 'string',
-                'card'           => 'array',
-                'card_token'     => 'string',
-                'customer_token' => 'string',
-                'capture'        => 'string'
-            ))
-            ->setAllowedValues(array(
-                'currency' => array('AUD', 'USD', 'NZD', 'SGD', 'EUR', 'GBP', 'CAD', 'HKD', 'JPY')
-            ));
+            ->setAllowedTypes('currency', 'string')
+            ->setAllowedTypes('amount', 'numeric')
+            ->setAllowedTypes('description', 'string')
+            ->setAllowedTypes('email', 'string')
+            ->setAllowedTypes('card', 'array')
+            ->setAllowedTypes('card_token', 'string')
+            ->setAllowedTypes('customer_token', 'string')
+            ->setAllowedTypes('capture', 'string')
+            ->setAllowedValues('currency', array('AUD', 'USD', 'NZD', 'SGD', 'EUR', 'GBP', 'CAD', 'HKD', 'JPY'))
+        ;
     }
 
     /**

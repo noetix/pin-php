@@ -4,7 +4,6 @@ namespace Pin\Card;
 
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class Create implements RequestInterface
 {
@@ -18,7 +17,7 @@ class Create implements RequestInterface
         $this->options = $resolver->resolve($options);
     }
 
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setRequired(array(
@@ -33,18 +32,17 @@ class Create implements RequestInterface
                 'address_state',
                 'address_country'
             ))
-            ->setAllowedTypes(array(
-                'number'           => 'numeric',
-                'expiry_month'     => 'numeric',
-                'expiry_year'      => 'numeric',
-                'cvc'              => 'numeric',
-                'name'             => 'string',
-                'address_line1'    => 'string',
-                'address_city'     => 'string',
-                'address_postcode' => 'numeric',
-                'address_state'    => 'string',
-                'address_country'  => 'string'
-            ));
+            ->setAllowedTypes('number', 'numeric')
+            ->setAllowedTypes('expiry_month', 'numeric')
+            ->setAllowedTypes('expiry_year', 'numeric')
+            ->setAllowedTypes('cvc', 'numeric')
+            ->setAllowedTypes('name', 'string')
+            ->setAllowedTypes('address_line1', 'string')
+            ->setAllowedTypes('address_city', 'string')
+            ->setAllowedTypes('address_postcode', 'numeric')
+            ->setAllowedTypes('address_state', 'string')
+            ->setAllowedTypes('address_country', 'string')
+        ;
     }
 
     /**

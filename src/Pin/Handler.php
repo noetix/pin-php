@@ -4,7 +4,6 @@ namespace Pin;
 
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Buzz\Browser;
 use Buzz\Client\Curl;
@@ -31,14 +30,14 @@ class Handler
     /**
      * Set our default options.
      *
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setDefaults(array(
                 'host' => function(Options $options) {
-                    if ($options->has('test') && $options['test']) {
+                    if (isset($options['test']) && $options['test']) {
                         return 'https://test-api.pin.net.au';
                     }
 
@@ -48,17 +47,16 @@ class Handler
             ->setRequired(array(
                 'key'
             ))
-            ->setOptional(array(
+            ->setDefined(array(
                 'host',
                 'test',
                 'timeout',
             ))
-            ->setAllowedTypes(array(
-                'host' => 'string',
-                'key'  => 'string',
-                'test' => 'bool',
-                'timeout' => 'int',
-            ));
+            ->setAllowedTypes('host', 'string')
+            ->setAllowedTypes('key', 'string')
+            ->setAllowedTypes('test', 'bool')
+            ->setAllowedTypes('timeout', 'int')
+        ;
     }
 
     /**

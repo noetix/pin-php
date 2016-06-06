@@ -4,7 +4,6 @@ namespace Pin\Charge;
 
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 
 class Refund implements RequestInterface
@@ -28,15 +27,12 @@ class Refund implements RequestInterface
         $this->options = $resolver->resolve($options);
     }
 
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver
-            ->setRequired(array(
-                'amount'
-            ))
-            ->setAllowedTypes(array(
-                'amount' => 'numeric'
-            ));
+            ->setRequired(array('amount'))
+            ->setAllowedTypes('amount', 'numeric')
+        ;
     }
 
     /**

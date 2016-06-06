@@ -4,7 +4,6 @@ namespace Pin\Customer;
 
 use Pin\RequestInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class Create implements RequestInterface
 {
@@ -18,22 +17,21 @@ class Create implements RequestInterface
         $this->options = $resolver->resolve($options);
     }
 
-    protected function setDefaultOptions(OptionsResolverInterface $resolver)
+    protected function setDefaultOptions(OptionsResolver $resolver)
     {
         $resolver
             ->setRequired(array(
                 'email'
             ))
-            ->setOptional(array(
+            ->setDefined(array(
                 'ip_address',
                 'card',
                 'card_token'
             ))
-            ->setAllowedTypes(array(
-                'email'          => 'string',
-                'card'           => 'array',
-                'card_token'     => 'string'
-            ));
+            ->setAllowedTypes('email', 'string')
+            ->setAllowedTypes('card', 'array')
+            ->setAllowedTypes('card_token', 'string')
+        ;
     }
 
     /**

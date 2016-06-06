@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bac7d473e1a891ad0743eb8ecd26e098",
-    "content-hash": "ca23f9768f4c4a80aea82e027e39e99d",
+    "hash": "a0431d02a05163658c27cdcbdd9997c2",
+    "content-hash": "210343457a29cbda97e0ecd004702608",
     "packages": [
         {
             "name": "kriswallsmith/buzz",
@@ -57,25 +57,25 @@
         },
         {
             "name": "symfony/options-resolver",
-            "version": "v2.8.6",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/options-resolver.git",
-                "reference": "5e4a8ee6e823428257f2002f6daf52de854d8384"
+                "reference": "30605874d99af0cde6c41fd39e18546330c38100"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/5e4a8ee6e823428257f2002f6daf52de854d8384",
-                "reference": "5e4a8ee6e823428257f2002f6daf52de854d8384",
+                "url": "https://api.github.com/repos/symfony/options-resolver/zipball/30605874d99af0cde6c41fd39e18546330c38100",
+                "reference": "30605874d99af0cde6c41fd39e18546330c38100",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.9"
+                "php": ">=5.5.9"
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.8-dev"
+                    "dev-master": "3.1-dev"
                 }
             },
             "autoload": {
@@ -107,7 +107,7 @@
                 "configuration",
                 "options"
             ],
-            "time": "2016-05-09 18:12:35"
+            "time": "2016-05-12 15:59:27"
         }
     ],
     "packages-dev": [
